@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <form class="" action="/auth/signup" method="post">
+                <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+                <label>
+                    <span>Введите e-mail</span>
+                    <input type="email" name="email" value="">
+                </label>
+                <label>
+                    <span>Введите Имя</span>
+                    <input type="text" name="firstName" value="">
+                </label>
+                <label>
+                    <span>Введите Фамилию</span>
+                    <input type="text" name="secondName" value="">
+                </label>
+                <label>
+                    <span>Введите пароль</span>
+                    <input type="password" name="password" value="">
+                </label>
+                <label>
+                    <span>Введите пароль еще раз</span>
+                    <input type="password" name="passwordTwo" value="">
+                </label>
+                <label>
+                    <input type="submit" name="" value="Зарегистрироваться">
+                </label>
+                <label>
+                    {{error}}
+                </label>
+            </form>
+        </div>
+    </body>
+</html>

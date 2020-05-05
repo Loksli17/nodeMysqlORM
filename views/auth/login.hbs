@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <form class="" action="/auth/login" method="post">
+                <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+                <label>
+                    <input type="email" name="email" value="">
+                </label>
+                <label>
+                    <input type="password" name="password" value="">
+                </label>
+                <label>
+                    <input type="checkbox" name="rememberMe" value="">
+                    <span>Запомнить меня</span>
+                </label>
+                <label>
+                    <input type="submit" name="" value="Войти">
+                </label>
+                <label>
+                    {{error}}
+                </label>
+            </form>
+        </div>
+    </body>
+</html>
