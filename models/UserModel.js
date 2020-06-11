@@ -12,26 +12,28 @@ UserModel.prototype.constructor = UserModel;
 
 UserModel.prototype.rules = {
     integer : ['role_id', ],
-    string  : ['last_name', 'first_name', 'email', 'pass'],
-    required: ['last_name', 'first_name', 'patronymic', 'email', 'role_id'],
+    string  : ['lastname', 'firstname', 'email', 'pass'],
+    required: ['lastname', 'firstname', 'email', 'role_id'],
+    json    : ['smth'],
 };
 
 UserModel.prototype.rulesMesseges = {
     string  : 'Поле должно быть строкой',
     integer : 'Поле должно быть числом',
     date    : 'Поле должно иметь формат : DD-MM-YYYY',
-    required: 'Данное поле является обязательным',
+    // required: 'Данное поле является обязательным',
+    // json    : 'Поле дожно быть формата json',
 }
 
 UserModel.prototype.fields = {
     id        : 'ID',
     last_name : 'Фамилия',
     first_name: 'Имя',
-    patronymic: 'Отчество',
     email     : 'E-mail',
     pass      : 'Пароль',
     group_id  : 'Группа',
     role_id   : 'Роль пользователя',
+    smth      : 'Проверка на json',
 }
 
 UserModel.prototype.validateMessege = 'Ошибка отправки формы';
