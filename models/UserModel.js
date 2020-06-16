@@ -15,20 +15,26 @@ UserModel.prototype.rules = {
     string  : ['lastname', 'firstname', 'email', 'pass'],
     required: ['lastname', 'firstname', 'email', 'role_id'],
     json    : ['smth'],
+    max     : [{lastname: 255}, ],
+    min     : [{lastname: 1}, ],
+    boolean : ['azaza'],
+    unique  : ['email'],
 };
 
 UserModel.prototype.rulesMesseges = {
     string  : 'Поле должно быть строкой',
     integer : 'Поле должно быть числом',
     date    : 'Поле должно иметь формат : DD-MM-YYYY',
+    max     : 'Значние данного поля больше максимально допустимого',
+    min     : 'Значние данного поля меньше минимально допустимого',
     // required: 'Данное поле является обязательным',
     // json    : 'Поле дожно быть формата json',
 }
 
 UserModel.prototype.fields = {
     id        : 'ID',
-    last_name : 'Фамилия',
-    first_name: 'Имя',
+    lastname  : 'Фамилия',
+    firstname : 'Имя',
     email     : 'E-mail',
     pass      : 'Пароль',
     group_id  : 'Группа',
