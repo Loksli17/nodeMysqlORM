@@ -19,7 +19,7 @@ exports.actionIndex = async (req, res) => {
     let user = {
         firstname : 'Мой сосед',
         lastname  : 'Мудак',
-        email     : 'ami0504@mail.ru',
+        email     : '1@mail.ru',
         pass      : '123',
         group_id  : '1',
         role_id   : '1',
