@@ -1,5 +1,7 @@
 const crypto = require('crypto');
 
+const DateModule = require('./../lib/date');
+
 const UserModel = require('./../models/UserModel');
 
 const User = new UserModel();
@@ -19,13 +21,18 @@ exports.actionIndex = async (req, res) => {
     let user = {
         firstname : 'Мой сосед',
         lastname  : 'Мудак',
-        email     : '1@mail.ru',
+        // email     : '1@mail.ru',
         pass      : '123',
         group_id  : '1',
         role_id   : '1',
         smth      : {kek: 'lol'},
         azaza     : false,
+        date      : new Date(),
     }
+
+    d = new Date();
+    d = DateModule.formatDbDateTime(d);
+    console.log();
 
     let result = await User.save(user);
 

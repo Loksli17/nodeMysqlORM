@@ -13,12 +13,13 @@ UserModel.prototype.constructor = UserModel;
 UserModel.prototype.rules = {
     integer : ['role_id', ],
     string  : ['lastname', 'firstname', 'email', 'pass'],
-    required: ['lastname', 'firstname', 'email', 'role_id'],
+    required: ['lastname', 'firstname', 'role_id', 'date'],
     json    : ['smth'],
     max     : [{lastname: 255}, ],
     min     : [{lastname: 1}, ],
     boolean : ['azaza'],
-    unique  : ['email'],
+    // unique  : ['email'],
+    date    : ['date'],
 };
 
 UserModel.prototype.rulesMesseges = {
@@ -36,6 +37,7 @@ UserModel.prototype.fields = {
     lastname  : 'Фамилия',
     firstname : 'Имя',
     email     : 'E-mail',
+    date      : 'Дата',
     pass      : 'Пароль',
     group_id  : 'Группа',
     role_id   : 'Роль пользователя',
