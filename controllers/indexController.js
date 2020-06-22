@@ -21,13 +21,14 @@ exports.actionIndex = async (req, res) => {
     let user = {
         firstname : 'Мой сосед',
         lastname  : 'Мудак',
-        // email     : 'kek@lol.ru',
+        // email     : '@lol.ru',
         pass      : '123',
         group_id  : '1',
         role_id   : 1,
         smth      : {kek: 'lol'},
         azaza     : false,
         date      : new Date(),
+        phone     : '8924109835',
     }
 
     d = new Date();
@@ -37,6 +38,8 @@ exports.actionIndex = async (req, res) => {
 
     console.log(result);
     res.send(user);
+
+    console.log(Number('89241098357'));
     // res.render('index', {user: user});
 
 }
