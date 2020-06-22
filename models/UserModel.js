@@ -11,8 +11,8 @@ UserModel.prototype = Object.create(modelMysql.prototype);
 UserModel.prototype.constructor = UserModel;
 
 UserModel.prototype.rules = {
-    integer : ['role_id', ],
-    string  : ['lastname', 'firstname', 'email', 'pass'],
+    integer : ['role_id'],
+    string  : ['lastname', 'firstname', 'pass'],
     required: ['lastname', 'firstname', 'role_id', 'date'],
     json    : ['smth'],
     max     : [{lastname: 255}, ],

@@ -28,7 +28,7 @@ exports.actionIndex = async (req, res) => {
         smth      : {kek: 'lol'},
         azaza     : false,
         date      : new Date(),
-        phone     : '8924109835',
+        phone     : '89241098357',
     }
 
     d = new Date();
@@ -38,8 +38,6 @@ exports.actionIndex = async (req, res) => {
 
     console.log(result);
     res.send(user);
-
-    console.log(Number('89241098357'));
     // res.render('index', {user: user});
 
 }
