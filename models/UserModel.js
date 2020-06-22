@@ -20,6 +20,7 @@ UserModel.prototype.rules = {
     boolean : ['azaza'],
     // unique  : ['email'],
     date    : ['date'],
+    email   : ['email'],
 };
 
 UserModel.prototype.rulesMesseges = {

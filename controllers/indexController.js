@@ -21,10 +21,10 @@ exports.actionIndex = async (req, res) => {
     let user = {
         firstname : 'Мой сосед',
         lastname  : 'Мудак',
-        // email     : '1@mail.ru',
+        // email     : 'kek@lol.ru',
         pass      : '123',
         group_id  : '1',
-        role_id   : '1',
+        role_id   : 1,
         smth      : {kek: 'lol'},
         azaza     : false,
         date      : new Date(),
@@ -32,11 +32,11 @@ exports.actionIndex = async (req, res) => {
 
     d = new Date();
     d = DateModule.formatDbDateTime(d);
-    console.log();
 
     let result = await User.save(user);
 
     console.log(result);
     res.send(user);
+    // res.render('index', {user: user});
 
 }
