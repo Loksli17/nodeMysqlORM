@@ -27,7 +27,7 @@ exports.actionIndex = async (req, res) => {
     //     role_id   : 1,
     //     smth      : {kek: 'lol'},
     //     azaza     : false,
-    //     date      : DateModule.formatDbDate(new Date()),
+    //     testtimme : DateModule.formatDbTime(new Date()),
     //     phone     : '89241098357',
     // }
 
