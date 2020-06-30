@@ -39,20 +39,36 @@ exports.actionIndex = async (req, res) => {
 
     let user = await User.find('all', {
         // newWhere: [
-        //     "(id < $id) AND timetest = $time",
         //     {
-        //         id  : 5,
-        //         time: DateModule.formatDbTime(new Date()),
-        //     }
+        //         and: [
+        //             {like    : {email: '%kek%'}},
+        //             {between: {id: [1, 4]}},
+        //         ]
+        //     },
+        //     {like      : {email: '%kek%'}},
+        //     {between   : {id: [1, 4]}},
+        //     {notBetween: {id: [2, 3]}},
+        //     {notlike   : {email: '%azaza%'}},
+        //     {eq        : {id: 5}},
+        //     {noteq     : {id: 4}},
+        //     {more      : {id: 5}},
+        //     {less      : {id: 5}},
+        //     {in        : {id: [1, 2, 3]}},
+        //     {notIn     : {id: [1, 2, 3]}},
         // ],
-        // newWhere: [
-        //     'id = $id', {id: 5},
-        // ],
-        // newWhere: [
-        //     'id IN ($array)', {array: [1, 3, 5]},
-        // ],
-        // newWhere: ['email LIKE $val', {val: '%kek%'}],
-        newWhere: ['id BETWEEN $val1 AND $val2', {val1: 1, val2: 5}],
+        newWhere: [
+            {and: [
+                {noteq: {id: 5}},
+                {or: [
+                    {more: {id: 5}},
+                    {less: {id: 7}},
+                ]},
+                {eq: {id: 5}},
+            ]},
+
+            // SELECT * FROM 'user' WHERE (id = 7) and (id > 5 or id < 7) and (id = 5);
+
+        ],
         // sql: true,
     });
 
