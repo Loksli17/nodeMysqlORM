@@ -60,10 +60,16 @@ exports.actionIndex = async (req, res) => {
             {and: [
                 {noteq: {id: 5}},
                 {or: [
-                    {more: {id: 5}},
-                    {less: {id: 7}},
+                    {more   : {id: 5}},
+                    {less   : {id: 7}},
+                    {in     : {last_name: ['Дима', 'Мой сосед']}},
+                    {notBetween: {id: [1, 4]}},
                 ]},
-                {eq: {id: 5}},
+                {notLike: {email: '%kek%'}},
+                {and: [
+                    {noteq: {last_name: 'Дима'}},
+                    {noteq: {last_name: 'Дима'}},
+                ]},
             ]},
 
             // SELECT * FROM 'user' WHERE (id = 7) and (id > 5 or id < 7) and (id = 5);
