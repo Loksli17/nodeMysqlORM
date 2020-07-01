@@ -9,15 +9,6 @@ const User = new UserModel();
 
 exports.actionIndex = async (req, res) => {
 
-    // let user = await User.find('all', {
-    //     where:[
-    //         ['id = ', 5, ''],
-    //     ],
-    //     whereIn: ['id', false, [1, 3], 'and',],
-    //     whereBetween: ['id', true, 2, 4, 'or'],
-    //     sql: true,
-    // });
-
     let user = {
         firstname : 'Мой сосед',
         lastname  : 'Мудак',
@@ -30,6 +21,8 @@ exports.actionIndex = async (req, res) => {
         testtimme : DateModule.formatDbTime(new Date()),
         phone     : '89241098357',
     }
+
+    let resu = User.remove({where: [{eq: {id: 138}}]});
 
     // d = new Date();
     // d = DateModule.formatDbDateTime(d);
