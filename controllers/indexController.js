@@ -56,27 +56,26 @@ exports.actionIndex = async (req, res) => {
         //     {in        : {id: [1, 2, 3]}},
         //     {notIn     : {id: [1, 2, 3]}},
         // ],
-        newWhere: [
-            {and: [
-                {noteq: {id: 5}},
-                {or: [
-                    {more   : {id: 5}},
-                    {less   : {id: 7}},
-                    {in     : {last_name: ['Дима', 'Мой сосед']}},
-                    {notBetween: {id: [1, 4]}},
-                ]},
-                {notLike: {email: '%kek%'}},
-                {and: [
-                    {noteq: {last_name: 'Дима'}},
-                    {noteq: {last_name: 'Дима'}},
-                ]},
-            ]},
-
-            // SELECT * FROM 'user' WHERE (id = 7) and (id > 5 or id < 7) and (id = 5);
-
+        where: [
+            // {and: [
+            //     {noteq: {id: 5}},
+            //     {or: [
+            //         {in        : {id: [1, 2, 3]}},
+            //         {in        : {lastname: ['Дима', 'Мой сосед']}},
+            //         {notBetween: {id: [1, 4]}},
+            //     ]},
+            //     {notLike: {email: '%kek%'}},
+            //     {and: [
+            //         {noteq: {lastname: 'Дима'}},
+            //         {noteq: {lastname: 'Дима'}},
+            //     ]},
+            // ]},
+            {noteq: {id: 2}},
         ],
         // sql: true,
     });
+
+    console.log(user);
 
     res.send(user);
     // res.render('index', {user: user});
