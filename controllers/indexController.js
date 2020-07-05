@@ -14,21 +14,35 @@ exports.actionIndex = async (req, res) => {
         lastname  : 'Мудак',
         // email     : '@lol.ru',
         pass      : '123',
-        group_id  : '1',
+        group_id  : 1,
         role_id   : 1,
         smth      : {kek: 'lol'},
         azaza     : false,
-        testtimme : DateModule.formatDbTime(new Date()),
+        timetest  : DateModule.formatDbTime(new Date()),
         phone     : '89241098357',
     }
 
-    let resu = User.remove({where: [{eq: {id: 138}}]});
+    let users = await User.find('all', {
+        where: [
+            {more: {id: 5}}
+        ],
+        sql: true,
+    });
 
-    // d = new Date();
-    // d = DateModule.formatDbDateTime(d);
-    //
-    let result = await User.save(user);
-    console.log(result);
+    await User.removeById(139);
+
+    console.log(users);
+
+    let result = await User.save({obj: user});
+    if(!result){
+        res.status(500);
+        res.render('server/error', {
+            layout : null,
+            err    : 500,
+            messege: "Iternal Server Error",
+        });
+        return;
+    }
 
     // console.log(user);
 
