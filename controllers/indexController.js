@@ -2,51 +2,52 @@ const crypto = require('crypto');
 
 const DateModule = require('./../lib/date');
 
-const UserModel = require('./../models/UserModel');
+const UserModel  = require('./../models/UserModel');
+const GroupModel = require('./../models/GroupModel');
 
-const User = new UserModel();
+User  = new UserModel();
+Group = new GroupModel();
 
 
 exports.actionIndex = async (req, res) => {
 
-    let user = {
-        firstname : 'Мой сосед',
-        lastname  : 'Мудак',
-        // email     : '@lol.ru',
-        pass      : '123',
-        group_id  : 1,
-        role_id   : 1,
-        smth      : {kek: 'lol'},
-        azaza     : false,
-        timetest  : DateModule.formatDbTime(new Date()),
-        phone     : '89241098357',
-    }
+    // let subquery = await Group.find('all', {
+    //     select : ['id'],
+    //     where: [
+    //         {in: {title: ['931', '933']}},
+    //     ],
+    //     join: [
+    //         ['inner', 'user', 'user.group_id = group.id'],
+    //     ],
+    //     subquery: true
+    // });
+    // console.log(subquery);
+    //
+    // let users = await User.find('all', {
+    //     where: [
+    //         {eq: {group_id: {subquery: ['ALL', subquery]}}},
+    //     ],
+    //     // sql: true,
+    // });
 
-    let users = await User.find('all', {
+    let subquery = await Group.find('all', {
+        select: ['title'],
         where: [
-            {more: {id: 5}}
+            {eq: {'user.group_id': {column: 'group.id'}}},
         ],
-        sql: true,
+        subquery: true,
     });
 
-    await User.removeById(139);
+    console.log(subquery);
 
-    console.log(users);
-
-    let result = await User.save({obj: user});
-    if(!result){
-        res.status(500);
-        res.render('server/error', {
-            layout : null,
-            err    : 500,
-            messege: "Iternal Server Error",
-        });
-        return;
-    }
-
-    // console.log(user);
+    let user = await User.find('all', {
+        select: ['lastname', 'firstname', {subquery: subquery, as: 'userGroup'}],
+        where : [
+            {less: {id: 20}},
+        ]
+        // sql: true,
+    });
 
     res.send(user);
-    // res.render('index', {user: user});
 
 }
