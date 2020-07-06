@@ -13,7 +13,7 @@ UserModel.prototype.constructor = UserModel;
 UserModel.prototype.rules = {
     integer : ['role_id'],
     string  : ['lastname', 'firstname', 'pass'],
-    required: ['lastname', 'firstname', 'role_id', 'date'],
+    required: ['lastname', 'firstname', 'role_id', 'timetest'],
     json    : ['smth'],
     max     : [{lastname: 255}, ],
     min     : [{lastname: 1}, ],
