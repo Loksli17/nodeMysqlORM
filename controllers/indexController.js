@@ -30,24 +30,36 @@ exports.actionIndex = async (req, res) => {
     //     // sql: true,
     // });
 
-    let subquery = await Group.find('all', {
-        select: ['title'],
-        where: [
-            {eq: {'user.group_id': {column: 'group.id'}}},
-        ],
-        subquery: true,
-    });
+    // let subquery = await Group.find('all', {
+    //     select: ['title'],
+    //     where: {eq: {'user.group_id': {column: 'group.id'}}},
+    //     subquery: true,
+    // });
+    //
+    // console.log(subquery);
+    //
+    // let user = await User.find('all', {
+    //     select: ['lastname', 'firstname', {subquery: subquery, as: 'userGroup'}],
+    //     where : [
+    //         {less: {id: 20}},
+    //     ]
+    //     // sql: true,
+    // });
+    //
+    // let testJoin = await User.find('all', {
+    //     where: {less: {'user.id': 7}},
+    //     join : ['inner', 'role', 'role.id = user.role_id'],
+    // });
+    //
+    // console.log(testJoin);
 
-    console.log(subquery);
+    let user = {
+        lastname : 'kek',
+        firstname: 'lol',
+        role_id  : 4,
+        timetest : DateModule.formatDbTime(new Date()),
+    }
 
-    let user = await User.find('all', {
-        select: ['lastname', 'firstname', {subquery: subquery, as: 'userGroup'}],
-        where : [
-            {less: {id: 20}},
-        ]
-        // sql: true,
-    });
-
-    res.send(user);
+    res.send({obj: user, id: 144});
 
 }

@@ -45,7 +45,7 @@ UserModel.prototype.fields = {
     group_id  : 'Группа',
     role_id   : 'Роль пользователя',
     smth      : 'Проверка на json',
-    phone     : 'Телефон'
+    phone     : 'Телефон',
 }
 
 UserModel.prototype.validateMessege = 'Ошибка отправки формы';
