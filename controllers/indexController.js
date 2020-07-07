@@ -11,24 +11,20 @@ Group = new GroupModel();
 
 exports.actionIndex = async (req, res) => {
 
-    // let subquery = await Group.find('all', {
-    //     select : ['id'],
-    //     where: [
-    //         {in: {title: ['931', '933']}},
-    //     ],
-    //     join: [
-    //         ['inner', 'user', 'user.group_id = group.id'],
-    //     ],
-    //     subquery: true
-    // });
-    // console.log(subquery);
-    //
-    // let users = await User.find('all', {
-    //     where: [
-    //         {eq: {group_id: {subquery: ['ALL', subquery]}}},
-    //     ],
-    //     // sql: true,
-    // });
+    let subquery = await Group.find('all', {
+        select : ['id'],
+        where: [
+            {in: {title: ['931', '933']}},
+        ],
+        subquery: true
+    });
+    console.log(subquery);
+
+    let users = await User.find('all', {
+        where: [
+            {eq: {group_id: {subquery: ['ANY', subquery]}}},
+        ],
+    });
 
     // let subquery = await Group.find('all', {
     //     select: ['title'],
@@ -46,20 +42,16 @@ exports.actionIndex = async (req, res) => {
     //     // sql: true,
     // });
     //
-    // let testJoin = await User.find('all', {
-    //     where: {less: {'user.id': 7}},
-    //     join : ['inner', 'role', 'role.id = user.role_id'],
-    // });
-    //
-    // console.log(testJoin);
+    let testJoin = await User.find('all', {
+        where: {less: {'user.id': 7}},
+        join : ['inner', 'role', 'role.id = user.role_id'],
+        // sql  : true,
+    });
 
-    let user = {
-        lastname : 'kek',
-        firstname: 'lol',
-        role_id  : 4,
-        timetest : DateModule.formatDbTime(new Date()),
-    }
+    console.log(testJoin);
 
-    res.send({obj: user, id: 144});
+    let test = await User.find('one', {where: {eq: {id: 1}}});
+    console.log(test);
 
+    res.send(users);
 }
