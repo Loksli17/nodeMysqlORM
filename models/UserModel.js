@@ -20,6 +20,8 @@ UserModel.prototype.rules = {
     boolean : ['azaza'],
     unique  : ['email'],
     date    : ['date'],
+    time    : ['time'],
+    datetime: ['timetest'],
     email   : ['email'],
     phone   : ['phone'],
 };
@@ -27,12 +29,12 @@ UserModel.prototype.rules = {
 UserModel.prototype.rulesMesseges = {
     string  : 'Поле должно быть строкой',
     integer : 'Поле должно быть числом',
-    date    : 'Поле должно иметь формат : DD-MM-YYYY',
+    date    : 'Поле должно иметь формат : YYYY-MM-DD',
     max     : 'Значение данного поля больше максимально допустимого',
     min     : 'Значение данного поля меньше минимально допустимого',
     // required: 'Данное поле является обязательным',
     // json    : 'Поле дожно быть формата json',
-    phone   : 'Введите номер телефона в следущем формате: 89005553535'
+    phone   : 'Введите номер телефона в следущем формате: +7 (800) 555-35-35'
 }
 
 UserModel.prototype.fields = {
@@ -41,6 +43,7 @@ UserModel.prototype.fields = {
     firstname : 'Имя',
     email     : 'E-mail',
     date      : 'Дата',
+    time      : 'Время',
     pass      : 'Пароль',
     group_id  : 'Группа',
     role_id   : 'Роль пользователя',
