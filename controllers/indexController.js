@@ -55,10 +55,12 @@ exports.actionIndex = async (req, res) => {
     //
     // res.send(users);
 
-    let user = await User.findById(18);
-    user.date = DateModule.formatDbDate(new Date());
-    user.timetest = DateModule.formatDbDateTime(new Date());
+    let user = {
+        lastname: 'kek',
+        email   : 'ami0504@mail.ru',
+    }
 
     let result = await User.save({data: user, id: 18});
+    console.log(result);
     res.send(result);
 }
