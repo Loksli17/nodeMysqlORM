@@ -1,4 +1,4 @@
-const modelMysql = require('../lib/Orm/mysqlOrm');
+const modelMysql = require('../lib/mysqlOrm');
 
 //model of tasks-mysql
 function GroupModel(){
